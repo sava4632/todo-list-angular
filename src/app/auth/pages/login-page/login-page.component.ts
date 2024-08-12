@@ -24,6 +24,9 @@ export class LoginPageComponent implements OnInit{
   public errorPasswordMessage = signal('');
 
   constructor( private authService: AuthService, private router: Router ) {
+
+    this.authService.setActiveView('login');
+
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateEmailErrorMessage());

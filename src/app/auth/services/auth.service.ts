@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../interfaces/user.interface';
@@ -12,6 +12,12 @@ export class AuthService {
   private basicAPIUrl: string = 'http://localhost:8081/api/v1';
   public emailCache?: string;
   private userIdKey: string = 'userEmail';
+
+  private messageSnackSubject = new BehaviorSubject<string>('');
+  message$ = this.messageSnackSubject.asObservable();
+
+  private activeViewSubject = new BehaviorSubject<'login' | 'register'>('login');
+  activeView$ = this.activeViewSubject.asObservable();
 
   constructor( private http: HttpClient ) { }
 
@@ -41,7 +47,7 @@ export class AuthService {
       email: email,
       password: password
     };
-    return this.http.post<AuthResponse>(`${this.basicAPIUrl}/create`, user)
+    return this.http.post<AuthResponse>(`${this.basicAPIUrl}/user/register`, user)
     .pipe(
       tap((response: AuthResponse) => {
         if (response.object) {
@@ -77,5 +83,13 @@ export class AuthService {
 
   logout(): void {
     this.removeUserData(); // Elimina el email y el ID del usuario del almacenamiento local
+  }
+
+  setMessage(msg: string): void {
+    this.messageSnackSubject.next(msg);
+  }
+
+  setActiveView(view: 'login' | 'register') {
+    this.activeViewSubject.next(view);
   }
 }

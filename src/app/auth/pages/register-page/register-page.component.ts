@@ -20,7 +20,7 @@ export class RegisterPageComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])')
+      // Validators.pattern('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])')
     ]),
     username: new FormControl('', [
       Validators.required,
@@ -40,6 +40,8 @@ export class RegisterPageComponent {
   public errorUsernameMessage = signal('');
 
   constructor(private authService: AuthService, private router: Router) {
+
+    this.authService.setActiveView('register');
 
     if (this.emailControl && this.passwordControl && this.usernameControl) {
       merge(this.emailControl.statusChanges, this.emailControl.valueChanges)
@@ -62,11 +64,12 @@ export class RegisterPageComponent {
     if( this.emailControl.valid && this.passwordControl.valid && this.usernameControl.valid ){
       this.authService.register( this.emailControl.value, this.passwordControl.value, this.usernameControl.value )
         .subscribe({
-          next( response ) {
-            //this.router.navigate(['/tasks']); //enviar al usuario al login
+          next: ( response ) => {
+            this.authService.setMessage('Registration successful!');
+            this.router.navigate(['/auth']); //enviar al usuario al login
           },
-          error(err) {
-
+          error: (error) => {
+            this.showRegisterError('An error occurred during registration')
           },
         })
     }
@@ -109,7 +112,7 @@ export class RegisterPageComponent {
     }
   }
 
-  private showRegisternError( error: string ) {
+  private showRegisterError( error: string ) {
 
     this.registerError.set( error || 'An error occurred during register');
 
