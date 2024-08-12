@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+  /* background-color: blue; */
+  padding: 16px;
+}
+
+form {
+  margin: 0%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: aqua; */
+}
+
+mat-form-field {
+  width: 100%;
+  box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+}
+
+mat-icon{
+  color: greenyellow;
+}
+
+.card-error{
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin-bottom: 1.5rem;
+  width: 100%;
+
+  & .icon-error{
+    cursor: pointer;
+
+    color: #721c24;
+  }
+}
+
+button{
+  width: 50%;
+  display: block;
+  margin-inline: auto;
+}

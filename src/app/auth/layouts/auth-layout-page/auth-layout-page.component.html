@@ -1,0 +1,24 @@
+<mat-card class="auth-card">
+
+  <mat-card-header>
+    <mat-card-title>{{ activeButton | titlecase }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions>
+    <button class="btn-login" mat-button [ngClass]="{'active': activeButton === 'login'}" (click)="goLogin()">Log in</button>
+    <button class="btn-register" mat-button [ngClass]="{'active': activeButton === 'register'}" (click)="goRegister()">Sign In</button>
+  </mat-card-actions>
+
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <div class="footer-info">
+      <span>© 2024 sava4632</span>
+      <a mat-button href="/terms">Terms & Conditions</a>
+      <a mat-button href="/privacy">Privacy Policy</a>
+    </div>
+  </mat-card-footer>
+</mat-card>

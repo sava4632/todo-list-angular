@@ -1,0 +1,54 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister($event)">
+
+    <!-- Email Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput
+        placeholder="dev@example.com"
+        [formControl]="emailControl"
+        (blur)="updateEmailErrorMessage()"
+        required>
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error *ngIf="registerForm.get('email')?.invalid">{{ errorEmailMessage() }}</mat-error>
+    </mat-form-field>
+
+    <!-- Password Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput
+        placeholder="****"
+        [type]="'password'"
+        [formControl]="passwordControl"
+        (blur)="updatePasswordErrorMessage()"
+        required>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="registerForm.get('password')?.invalid">{{ errorPasswordMessage() }}</mat-error>
+    </mat-form-field>
+
+    <!-- Username Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your username</mat-label>
+      <input matInput
+        placeholder="dev123"
+        [type]="'username'"
+        [formControl]="usernameControl"
+        (blur)="updateUsernameErrorMessage()"
+        required>
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="registerForm.get('username')?.invalid">{{ errorUsernameMessage() }}</mat-error>
+    </mat-form-field>
+
+    <!-- Error Message Card -->
+    <mat-card *ngIf="registerError()" class="card-error">
+      <mat-card-content>
+        {{ registerError() }}
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit">
+      Sign in
+    </button>
+  </form>
+</div>

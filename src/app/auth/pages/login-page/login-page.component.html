@@ -1,0 +1,35 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin($event)">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput
+        placeholder="dev@example.com"
+        [formControl]="email"
+        (blur)="updateEmailErrorMessage()"
+        required>
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error *ngIf="email.invalid">{{ errorEmailMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput
+        placeholder="****"
+        [type]="'password'"
+        [formControl]="password"
+        required>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="password.invalid">{{ errorPasswordMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-card *ngIf="loginError" [ngStyle]="{ display: loginError() ? 'block' : 'none' }" class="card-error">
+      <mat-card-content>
+        {{ loginError() }}
+      </mat-card-content>
+    </mat-card>
+
+    <button mat-raised-button color="primary" type="submit">
+      Log In
+    </button>
+  </form>
+</div>
