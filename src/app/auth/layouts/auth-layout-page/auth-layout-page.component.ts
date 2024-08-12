@@ -49,10 +49,8 @@ export class AuthLayoutPageComponent implements OnInit {
 
   goRegister() {
     this.router.navigate(['auth/register']);
-    //this.setRegisterState();
   }
   goLogin() {
     this.router.navigate(['auth/login']);
-    //this.setLoginState();
   }
 }

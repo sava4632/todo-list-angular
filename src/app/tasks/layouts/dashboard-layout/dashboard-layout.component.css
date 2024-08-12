@@ -1,0 +1,10 @@
+mat-sidenav-container {
+  background: white;
+}
+
+mat-sidenav{
+  background-color: #693bb8;
+}
+.spacer {
+  flex: 1 1 auto;
+}
