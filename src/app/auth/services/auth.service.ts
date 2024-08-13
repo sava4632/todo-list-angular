@@ -11,7 +11,7 @@ export class AuthService {
 
   private basicAPIUrl: string = 'http://localhost:8081/api/v1';
   public emailCache?: string;
-  private userIdKey: string = 'userEmail';
+  private userIdKey: string = 'userId';
 
   private messageSnackSubject = new BehaviorSubject<string>('');
   message$ = this.messageSnackSubject.asObservable();
@@ -33,6 +33,7 @@ export class AuthService {
     .pipe(
       tap((response: AuthResponse) => {
         if (response.object) {
+          this.removeUserData();
           this.saveUserData(response.object); // Guarda el email y el ID del usuario en el almacenamiento local
         }
       })
@@ -52,6 +53,8 @@ export class AuthService {
       tap((response: AuthResponse) => {
         if (response.object) {
           this.emailCache = response.object.email;
+          this.removeUserData();
+          this.saveUserData(response.object);
         }
       })
     );
@@ -64,11 +67,7 @@ export class AuthService {
     }
   }
 
-  private getUserId(): string | null {
-    return localStorage.getItem(this.userIdKey);
-  }
-
-  private getEmail(): string | null {
+  getUserId(): string | null {
     return localStorage.getItem(this.userIdKey);
   }
 

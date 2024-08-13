@@ -1,1 +1,111 @@
-<p>tasks-page works!</p>
+<div class="table-container">
+  <div class="table-header">
+    <h2>Pending tasks</h2>
+  </div>
+  <ng-container *ngIf="tasks.length > 0; else noTasksPendingTemplate">
+    <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let task; let i = index"> {{i + 1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let task"> {{task.title}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let task"> {{task.description}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef> Due date </th>
+        <td mat-cell *matCellDef="let task"> {{task.dueDate}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-th-center"> Actions </th>
+        <td mat-cell *matCellDef="let task" class="icon-actions">
+          <button mat-icon-button color="primary" aria-label="Edit Task">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" aria-label="Delete Task" (click)="deleteTask(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Complete Task" class="done-icon" (click)="completeTask(task)">
+            <mat-icon>done_all</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-pending-data-rows"></tr>
+    </table>
+  </ng-container>
+
+  <ng-template #noTasksPendingTemplate>
+    <mat-card  class="card-info-no-tasks">
+      <mat-card-content>
+        No pending tasks available.
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>
+
+<div class="table-container">
+  <div class="table-header">
+    <h2>Completed tasks</h2>
+  </div>
+
+  <!-- Mostrar tabla si hay tareas completadas, de lo contrario mostrar el mensaje de alerta -->
+  <ng-container *ngIf="completedTasks.length > 0; else noTasksCompleteTemplate">
+    <table mat-table [dataSource]="completedTasks" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let task; let i = index"> {{i + 1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let task"> {{task.title}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let task"> {{task.description}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef> Due date </th>
+        <td mat-cell *matCellDef="let task"> {{task.dueDate}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-th-center"> Actions </th>
+        <td mat-cell *matCellDef="let task" class="icon-actions">
+          <button mat-icon-button color="primary" aria-label="Edit Task">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" aria-label="Delete Task" (click)="deleteTask(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Uncomplete Task" class="remove-icon" (click)="unCompleteTask(task)">
+            <mat-icon>remove_done</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-completed-data-rows"></tr>
+    </table>
+  </ng-container>
+
+  <ng-template #noTasksCompleteTemplate>
+    <mat-card  class="card-info-no-tasks">
+      <mat-card-content>
+        No completed tasks available.
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>

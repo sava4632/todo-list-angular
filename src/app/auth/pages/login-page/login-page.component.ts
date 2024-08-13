@@ -72,7 +72,7 @@ export class LoginPageComponent implements OnInit{
           error: (error) => {
             //console.error('Login failed', error);
             this.password.reset();
-            this.showLoginError(error.error.message)
+            this.showLoginError(error.error.message);
           }
         }
       );
