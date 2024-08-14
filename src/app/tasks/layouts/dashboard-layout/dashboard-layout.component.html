@@ -1,17 +1,43 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over" closed [ngStyle]="{ width: '250px' }">
-    <!-- <mat-toolbar color="primary">
-      <button   mat-icon-button class="example-icon"  aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span></span>
+    <mat-toolbar color="primary">
+      <span>{{ userName | titlecase }}</span>
       <span class="spacer"></span>
-    </mat-toolbar> -->
+      <!-- <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+    </mat-toolbar>
 
-    <mat-nav-list>
-      <mat-list-item (click)="sidenav.toggle()">
+    <mat-nav-list class="sidenav-list">
+      <div class="menu-items">
+        <!-- <mat-list-item
+          *ngFor="let item of sidebarItems"
+          (click)="sidenav.toggle()"
+          [routerLink]="item.url">
 
+          <mat-icon matListItemIcon class="icon-sidenav-item">{{ item.icon }}</mat-icon>
+          <p matLine> {{ item.label }} </p>
+        </mat-list-item> -->
+
+        <mat-list-item>
+          <mat-icon matListItemIcon class="icon-sidenav-item">dashboard</mat-icon>
+          <p matLine> Dashboard </p>
+        </mat-list-item>
+        <mat-list-item >
+          <mat-icon matListItemIcon class="icon-sidenav-item">add_circle</mat-icon>
+          <p matLine> Create task </p>
+        </mat-list-item>
+        <mat-list-item >
+          <mat-icon matListItemIcon class="icon-sidenav-item">info</mat-icon>
+          <p matLine> About </p>
+        </mat-list-item>
+      </div>
+
+      <mat-list-item (click)="logout()" class="logout-sidenav-item">
+        <mat-icon matListItemIcon class="icon-logout-sidenav-item">logout</mat-icon>
+        <p matLine> Log out </p>
       </mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
 
@@ -24,9 +50,9 @@
 
     <span class="spacer"></span>
 
-    <button mat-icon-button>
+    <!-- <button mat-icon-button (click)="logout()">
       <mat-icon [ngStyle]="{ color: 'red'}">logout</mat-icon>
-    </button>
+    </button> -->
   </mat-toolbar>
 
   <div class="container p-2">

@@ -2,9 +2,49 @@ mat-sidenav-container {
   background: white;
 }
 
-mat-sidenav{
-  background-color: #693bb8;
+mat-sidenav {
+  background-color: white;
 }
+
+.sidenav-list {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px); /* Ajusta la altura tomando en cuenta el toolbar */
+  overflow-y: auto; /* Permite el scroll cuando el contenido es largo */
+  padding-bottom: 0;
+}
+
+.menu-items {
+  flex-grow: 1; /* Ocupa todo el espacio disponible */
+}
+
+mat-list-item{
+  & p{
+    margin: 0;
+    line-height: 1; /* Asegura de que no haya espacio adicional en el texto */
+    font-weight: bold;
+  }
+}
+
+.logout-sidenav-item {
+  background-color: red;
+  border-radius: 0% !important;
+
+  & p{
+    margin: 0;
+    line-height: 1; /* Asegúrate de que no haya espacio adicional en el texto */
+    color: white;
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.icon-sidenav-item {
+  color: #693bb8 !important;
+}
+
+.icon-logout-sidenav-item {
+  color: white !important;
 }
