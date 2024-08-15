@@ -12,6 +12,9 @@ export class TaskService {
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   public tasks$ = this.tasksSubject.asObservable();
 
+  private currentPageSubject = new BehaviorSubject<'dashboard' | 'about'>('dashboard');
+  public currentPage$ = this.currentPageSubject.asObservable();
+
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getUserTasks(): Observable<TasksResponse> {
@@ -76,6 +79,10 @@ export class TaskService {
           tap(() => this.updateLocalTasksList()) // Actualizar la lista después de actualizar la tarea
         );
     }
+  }
+
+  updateCurrentPage( page: 'dashboard' | 'about' ): void{
+    this.currentPageSubject.next(page);
   }
 
   // Método para actualizar la lista de tareas en el BehaviorSubject

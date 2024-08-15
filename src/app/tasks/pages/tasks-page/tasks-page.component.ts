@@ -21,7 +21,10 @@ export class TasksPageComponent implements OnInit {
     private taskService: TaskService,
     private snackBar: MatSnackBar,
     private updateRefDialog: MatDialog
-  ) {}
+  ) {
+
+    this.taskService.updateCurrentPage('dashboard');
+  }
 
   ngOnInit(): void {
     // Suscribirse a las tareas del servicio

@@ -22,6 +22,7 @@ export class DashboardLayoutComponent implements OnInit {
   // ];
 
   public currentUser?: User;
+  public currentPage: 'dashboard' | 'about' = 'dashboard';
 
 
   constructor(private authService: AuthService, private router: Router, private dialog: MatDialog, private tasksService: TaskService, private snackBar: MatSnackBar) { }
@@ -43,6 +44,8 @@ export class DashboardLayoutComponent implements OnInit {
           this.handleUserNotFound();
         },
       });
+
+    this.tasksService.currentPage$.subscribe( page => this.currentPage = page );
   }
 
   private handleUserNotFound() {

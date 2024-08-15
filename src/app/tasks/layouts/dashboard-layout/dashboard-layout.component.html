@@ -26,7 +26,7 @@
           <mat-icon matListItemIcon class="icon-sidenav-item">dashboard</mat-icon>
           <p matLine> Dashboard </p>
         </mat-list-item>
-        <mat-list-item (click)="[sidenav.toggle(), openCreateTaskDialog()]">
+        <mat-list-item (click)="[sidenav.toggle(), openCreateTaskDialog()]" [routerLink]="'./dashboard'">
           <mat-icon matListItemIcon class="icon-sidenav-item">add_circle</mat-icon>
           <p matLine> Create task </p>
         </mat-list-item>
@@ -49,7 +49,7 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Dashboard</span>
+    <span>{{ currentPage | titlecase }}</span>
 
     <span class="spacer"></span>
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-about-page',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AboutPageComponent {
 
+  constructor( private taskService: TaskService ){
+    this.taskService.updateCurrentPage('about');
+  }
 }

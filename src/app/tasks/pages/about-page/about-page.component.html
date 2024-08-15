@@ -1,1 +1,32 @@
-<p>about-page works!</p>
+<div class="about-container">
+  <mat-card class="about-card">
+    <mat-card-header>
+      <mat-card-title>
+        About This Application
+        <mat-icon class="about-icon" color="primary">info</mat-icon>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content >
+      <p>
+        This is a To-Do List application built with Angular for the frontend and Spring Boot for the backend.
+        The application allows users to create, edit, complete, and delete tasks. It also separates pending tasks from completed ones, making task management straightforward and efficient.
+      </p>
+      <p>
+        This application is designed to help you organize your tasks effectively. You can easily track your progress by marking tasks as complete or viewing your pending tasks.
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <h3>Check out the source code:</h3>
+      <div class="links-container">
+        <a mat-raised-button color="primary" href="https://github.com/sava4632/todo-list-angular" target="_blank">
+          <mat-icon>code</mat-icon> Frontend Repository
+        </a>
+        <a mat-raised-button color="accent" href="https://github.com/sava4632/todo-list-springboot-mvc" target="_blank">
+          <mat-icon>api</mat-icon> Backend API Repository
+        </a>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
