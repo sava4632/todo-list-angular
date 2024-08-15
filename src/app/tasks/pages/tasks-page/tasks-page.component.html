@@ -63,7 +63,7 @@
     <table mat-table [dataSource]="completedTasks" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let task; let i = index"> {{ tasks.length - i}}</td>
+        <td mat-cell *matCellDef="let task; let i = index"> {{ completedTasks.length - i}}</td>
       </ng-container>
 
       <ng-container matColumnDef="title">

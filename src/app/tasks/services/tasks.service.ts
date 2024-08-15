@@ -8,7 +8,7 @@ import { Task } from '../../interfaces/task.interface';
 @Injectable({ providedIn: 'root' })
 export class TaskService {
 
-  private basicUrl = 'http://localhost:8081/api/v1';
+  private basicUrl = 'https://intuitive-friendship-production.up.railway.app/api/v1';
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   public tasks$ = this.tasksSubject.asObservable();
 

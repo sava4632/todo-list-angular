@@ -9,7 +9,7 @@ import { User } from '../../interfaces/user.interface';
 })
 export class AuthService {
 
-  private basicAPIUrl: string = 'http://localhost:8081/api/v1';
+  private basicAPIUrl: string = 'https://intuitive-friendship-production.up.railway.app/api/v1';
   public emailCache?: string;
   private userIdKey: string = 'userId';
 
