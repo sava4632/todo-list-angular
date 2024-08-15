@@ -6,6 +6,9 @@
       <!-- <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button> -->
+      <div class="user-image-container">
+        <img class="user-image" src="assets/images/picture.ico" alt="User picture">
+      </div>
     </mat-toolbar>
 
     <mat-nav-list class="sidenav-list">
@@ -27,7 +30,7 @@
           <mat-icon matListItemIcon class="icon-sidenav-item">add_circle</mat-icon>
           <p matLine> Create task </p>
         </mat-list-item>
-        <mat-list-item >
+        <mat-list-item (click)="[sidenav.toggle()]" [routerLink]="'./about-application'">
           <mat-icon matListItemIcon class="icon-sidenav-item">info</mat-icon>
           <p matLine> About </p>
         </mat-list-item>
@@ -53,6 +56,9 @@
     <!-- <button mat-icon-button (click)="logout()">
       <mat-icon [ngStyle]="{ color: 'red'}">logout</mat-icon>
     </button> -->
+    <!-- <div >
+      <img class="user-image" src="assets/images/picture.ico" alt="User picture">
+    </div> -->
   </mat-toolbar>
 
   <div class="container p-2">

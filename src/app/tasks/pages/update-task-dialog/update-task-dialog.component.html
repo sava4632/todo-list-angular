@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create new task</h1>
+<h1 mat-dialog-title>Update task</h1>
 <div mat-dialog-content>
   <form [formGroup]="taskForm">
     <mat-form-field>
@@ -28,6 +28,6 @@
 
   <div mat-dialog-actions class="actions">
     <button mat-flat-button [ngStyle]="{ background: 'red', color: 'white' }" (click)="onCancel()">Cancel</button>
-    <button mat-flat-button color="primary" (click)="onCreate()">Create</button>
+    <button mat-flat-button color="primary" (click)="onUpdate()">Update</button>
   </div>
 </div>

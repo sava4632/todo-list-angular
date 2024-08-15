@@ -57,7 +57,16 @@ mat-list-item{
   color: white !important;
 }
 
-
 .container{
   padding-top: 64px;
+}
+
+.user-image-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.user-image{
+  cursor: pointer;
+  width: 50px;
 }

@@ -7,13 +7,17 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 import { MaterialModule } from '../tasks/material/material.module';
 import { CreateTaskDialogComponent } from './pages/create-task-dialog/create-task-dialog.component';
+import { UpdateTaskDialogComponent } from './pages/update-task-dialog/update-task-dialog.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     TasksPageComponent,
-    CreateTaskDialogComponent
+    CreateTaskDialogComponent,
+    UpdateTaskDialogComponent,
+    AboutPageComponent
   ],
   imports: [
     CommonModule,
