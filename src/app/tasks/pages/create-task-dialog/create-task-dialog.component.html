@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Create new task</h1>
+<div mat-dialog-content>
+  <form [formGroup]="taskForm">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Task title" formControlName="title">
+      <mat-error *ngIf="errorTitleMessage()">{{ errorTitleMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Task Description" formControlName="description"></textarea>
+      <mat-error *ngIf="errorDescriptionMessage()">{{ errorDescriptionMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose due date</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="YYYY/MM/DD" formControlName="dueDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="errorDueDateMessage()">{{ errorDueDateMessage() }}</mat-error>
+    </mat-form-field>
+
+    <p>
+      <mat-slide-toggle color="primary" formControlName="isCompleted">Task completed!</mat-slide-toggle>
+    </p>
+  </form>
+
+  <div mat-dialog-actions class="actions">
+    <button mat-flat-button [ngStyle]="{ background: 'red', color: 'white' }" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onCreate()">Create</button>
+  </div>
+</div>

@@ -6,6 +6,14 @@ mat-sidenav {
   background-color: white;
 }
 
+.main-toolbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
 .sidenav-list {
   display: flex;
   flex-direction: column;
@@ -22,7 +30,7 @@ mat-list-item{
   & p{
     margin: 0;
     line-height: 1; /* Asegura de que no haya espacio adicional en el texto */
-    font-weight: bold;
+    /* font-weight: bold; */
   }
 }
 
@@ -47,4 +55,9 @@ mat-list-item{
 
 .icon-logout-sidenav-item {
   color: white !important;
+}
+
+
+.container{
+  padding-top: 64px;
 }

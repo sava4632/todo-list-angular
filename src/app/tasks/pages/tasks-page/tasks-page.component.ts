@@ -18,19 +18,14 @@ export class TasksPageComponent implements OnInit{
   constructor( private taskService: TaskService, private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
-    this.taskService.getUserTasks()
-      .subscribe({
-        next: (response) => {
-          if(response.object){
-            this.tasks = response.object.filter(task => !task.isCompleted);
-            this.completedTasks = response.object.filter(task => task.isCompleted);
-            console.log(JSON.stringify(this.tasks));
-          }
-        },
-        error(err) {
-          console.error('Error loading tasks', err);
-        },
-      });
+    // Suscribirse a las tareas del servicio
+    this.taskService.tasks$.subscribe(tasks => {
+      this.tasks = tasks.filter(task => !task.isCompleted);
+      this.completedTasks = tasks.filter(task => task.isCompleted);
+    });
+
+    // Cargar tareas iniciales
+    this.taskService.updateLocalTasksList();
   }
 
   completeTask(task: Task) {

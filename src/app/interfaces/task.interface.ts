@@ -5,6 +5,6 @@ export interface Task {
   title:       string;
   description: string;
   isCompleted:  boolean;
-  dueDate:     Date;
+  dueDate:     string;
   user:        User;
 }

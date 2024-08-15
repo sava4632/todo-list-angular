@@ -12,7 +12,6 @@ export class AuthService {
   private basicAPIUrl: string = 'http://localhost:8081/api/v1';
   public emailCache?: string;
   private userIdKey: string = 'userId';
-  private user: User | null = null;
 
   private messageSnackSubject = new BehaviorSubject<string>('');
   message$ = this.messageSnackSubject.asObservable();
@@ -36,7 +35,6 @@ export class AuthService {
         if (response.object) {
           this.removeUserData();
           this.saveUserData(response.object); // Guarda el email y el ID del usuario en el almacenamiento local
-          this.user = response.object;
         }
       })
     );
@@ -62,6 +60,10 @@ export class AuthService {
     );
   }
 
+  getUser(): Observable<AuthResponse>{
+    return this.http.get<AuthResponse>(`${this.basicAPIUrl}/user/${this.getUserId()}`);
+  }
+
   private saveUserData(user: User): void {
     // localStorage.setItem(this.userIdKey, user.email);
     if (user.id !== undefined) {
@@ -73,10 +75,6 @@ export class AuthService {
     return localStorage.getItem(this.userIdKey);
   }
 
-  getUser(): User | null{
-    return this.user;
-  }
-
   private removeUserData(): void {
     localStorage.removeItem(this.userIdKey);
   }
@@ -86,9 +84,14 @@ export class AuthService {
     return !!this.getUserId(); // Devuelve true si hay un ID de usuario, false en caso contrario
   }
 
+
   logout(): void {
     this.removeUserData(); // Elimina el email y el ID del usuario del almacenamiento local
   }
+
+
+
+
 
   setMessage(msg: string): void {
     this.messageSnackSubject.next(msg);
