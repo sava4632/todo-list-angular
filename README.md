@@ -32,5 +32,5 @@ Este es el frontend de la aplicación Lista de Tareas, desarrollado con Angular 
 1. **Clonar el Repositorio**
 
    ```bash
-   git clone <enlace-al-repositorio-frontend>
-   cd <nombre-del-repositorio-frontend>
+   git clone https://github.com/sava4632/todo-list-angular
+   cd todo-list-angular
