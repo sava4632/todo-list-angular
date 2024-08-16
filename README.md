@@ -1,27 +1,36 @@
-# TodoList
+## Todo List Application - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este es el frontend de la aplicación Lista de Tareas, desarrollado con Angular y Angular Material. La interfaz de usuario interactúa con la API RESTful proporcionada por el backend para gestionar la creación, edición, eliminación y consulta de tareas.
 
-## Development server
+### Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Interfaz de usuario dinámica y moderna con Angular Material
+- Gestión de tareas: Crear, editar, eliminar y listar tareas
+- Autenticación de usuarios: Inicio de sesión y registro
+- Consumo de API: Comunicación con el backend a través de llamadas HTTP
+- Diseño responsivo: Adaptable a diferentes tamaños de pantalla
 
-## Code scaffolding
+### Enlaces Importantes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Backend**: [Repositorio del Backend (Spring Boot)](https://github.com/sava4632/todo-list-springboot-mvc)
+- **Aplicación en Producción**: [Todo List en Producción](https://todolist-sava4632.netlify.app/)
 
-## Build
+### Tecnologías Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular
+- Angular Material
+- RxJS
+- TypeScript
 
-## Running unit tests
+### Requisitos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Node.js**: Versión 14.x o superior
+- **Angular CLI**: Versión 15.x o superior (instalable con `npm install -g @angular/cli`)
 
-## Running end-to-end tests
+### Instalación y Configuración
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clonar el Repositorio**
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```bash
+   git clone <enlace-al-repositorio-frontend>
+   cd <nombre-del-repositorio-frontend>
