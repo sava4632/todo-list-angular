@@ -5,8 +5,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
+    "build:github": "npm run delete:docs && npm run delete:assets && npm run build:href && npm run copy:dist && npm run copy:assets",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "delete:docs": "del docs",
+    "delete:assets": "del docs\\assets\\images\\*",
+    "copy:dist": "copyfiles dist/todo-list/browser/* ./docs -f",
+    "copy:assets": "copyfiles dist/todo-list/browser/assets/images/* ./docs/assets/images -f"
   },
   "private": true,
   "dependencies": {
